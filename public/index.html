@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Version Tracker</title>
+    <!-- QR Code library -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>App Version Tracker</h1>
+    
+    <div class="controls">
+        <button id="addAppBtn" class="btn">Add New App</button>
+        <div class="filters">
+            <select id="platformFilter">
+                <option value="all">All Platforms</option>
+                <option value="ios">iOS</option>
+                <option value="android">Android</option>
+            </select>
+        </div>
+    </div>
+
+    <table id="appTable">
+        <thead>
+            <tr>
+                <th>App Name</th>
+                <th>Platform</th>
+                <th>Version</th>
+                <th>Release Date</th>
+                <th>Status</th>
+                <th>Install</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="appTableBody">
+        </tbody>
+    </table>
+
+    <!-- Add/Edit Modal -->
+    <div id="appModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add New App</h2>
+            <form id="appForm">
+                <div class="form-group">
+                    <label for="appName">App Name:</label>
+                    <input type="text" id="appName" required>
+                </div>
+                <div class="form-group">
+                    <label for="platform">Platform:</label>
+                    <select id="platform" required>
+                        <option value="ios">iOS</option>
+                        <option value="android">Android</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="version">Version:</label>
+                    <input type="text" id="version" required pattern="^\d+\.\d+\.\d+$" title="Please use semantic versioning (e.g., 1.0.0)">
+                </div>
+                <div class="form-group">
+                    <label for="releaseDate">Release Date:</label>
+                    <input type="date" id="releaseDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" required>
+                        <option value="Development">Development</option>
+                        <option value="Testing">Testing</option>
+                        <option value="Production">Production</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="installUrl">Install URL:</label>
+                    <input type="url" id="installUrl" required placeholder="https://...">
+                </div>
+                <button type="submit" class="btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Your JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html> 
